@@ -165,6 +165,72 @@ body.nm .note.up .nd b,body.nm .note.up .nd span{color:#34483f}
 .hdr,.bnav,.btns,.seg,#v1,#v1n{display:none!important}.card{border:0;padding:0;box-shadow:none}body{background:#fff;padding:0}
 .hd,.hp,.dh{-webkit-print-color-adjust:exact;print-color-adjust:exact}.ri{break-inside:avoid}}
 </style>
+<style id="green-notes">
+/* Notes view (Jobs / Daily / Weekly) — soft light-green theme */
+body.nm{--bg:#eef6ec;--card:#fbfefa;--ac:#5f8f6b;--g1:#9fcca0;--g2:#5f8f6b;--bd:#d3e5d0}
+body.nm .hdr{background:#d9ecd6;color:#2f4a37;box-shadow:0 4px 12px rgba(63,110,78,.12)}
+body.nm .ht span,body.nm .nav{background:rgba(47,74,55,.12);color:#2f4a37}
+body.nm .pri{background:#b7d9b4;color:#243a2b;box-shadow:none}
+body.nm .seg button.on{background:#d9ecd6;color:#2f4a37;box-shadow:none}
+body.nm .dh{background:#cfe5cb;color:#2f4a37}
+body.nm .dh.upn{background:#c8e2da;color:#2d4a42}
+body.nm .hd{background:#c3dcbf;color:#2f4a37}
+body.nm .rep h2{color:#4a7656}
+body.nm .ri.nr .rt{color:#2f4a37}
+body.nm #nti:focus,body.nm #ndt:focus{border-color:#7fb287}
+body.nm .note{background:#f6fbf4;color:#2f4a37;border-color:#d3e5d0;border-left-color:#9cc79a;box-shadow:0 2px 8px rgba(63,110,78,.10)}
+body.nm .note .t{color:#2f4a37}
+body.nm .ntag{color:#5f8f6b}
+body.nm .nd{background:#cde6c9;color:#2f4a37;box-shadow:none}
+body.nm .nd b,body.nm .nd span{color:#2f4a37}
+body.nm .note.up{background:#eef7f4;border-color:#cfe3dc;border-left-color:#8dbdb0}
+body.nm .note.up .t{color:#2d4a42}
+body.nm .note.up .ntag{color:#4f8a7c}
+body.nm .note.up .nd{background:#c5e0d8;color:#2d4a42}
+body.nm .note.up .nd b,body.nm .note.up .nd span{color:#2d4a42}
+@media (prefers-color-scheme:dark){
+:root:not([data-theme="light"]) body.nm{--bg:#141c16;--card:#1a251d;--ac:#9fd0a8;--bd:#2f4235}
+:root:not([data-theme="light"]) body.nm .hdr{background:#1f2e24;color:#d6ead8;box-shadow:none}
+:root:not([data-theme="light"]) body.nm .ht span,:root:not([data-theme="light"]) body.nm .nav{background:rgba(214,234,216,.12);color:#d6ead8}
+:root:not([data-theme="light"]) body.nm .pri{background:#3e6a4a;color:#e4f3e6}
+:root:not([data-theme="light"]) body.nm .seg button.on{background:#2a3d30;color:#d6ead8}
+:root:not([data-theme="light"]) body.nm .dh{background:#2a3d30;color:#d6ead8}
+:root:not([data-theme="light"]) body.nm .dh.upn{background:#264038;color:#cfe8e0}
+:root:not([data-theme="light"]) body.nm .hd{background:#2a3d30;color:#d6ead8}
+:root:not([data-theme="light"]) body.nm .rep h2{color:#9fd0a8}
+:root:not([data-theme="light"]) body.nm .ri.nr .rt{color:#d6ead8}
+:root:not([data-theme="light"]) body.nm .note{background:#1b2a20;color:#d6ead8;border-color:#2f4235;border-left-color:#6fa57b}
+:root:not([data-theme="light"]) body.nm .note .t{color:#d6ead8}
+:root:not([data-theme="light"]) body.nm .ntag{color:#9fd0a8}
+:root:not([data-theme="light"]) body.nm .nd{background:#3a5a44;color:#e4f3e6}
+:root:not([data-theme="light"]) body.nm .nd b,:root:not([data-theme="light"]) body.nm .nd span{color:#e4f3e6}
+:root:not([data-theme="light"]) body.nm .note.up{background:#1a2b28;border-color:#2c4540;border-left-color:#5f9a8d}
+:root:not([data-theme="light"]) body.nm .note.up .t{color:#cfe8e0}
+:root:not([data-theme="light"]) body.nm .note.up .ntag{color:#8cc5b8}
+:root:not([data-theme="light"]) body.nm .note.up .nd{background:#2f5149;color:#cfe8e0}
+:root:not([data-theme="light"]) body.nm .note.up .nd b,:root:not([data-theme="light"]) body.nm .note.up .nd span{color:#cfe8e0}
+}
+:root[data-theme="dark"] body.nm{--bg:#141c16;--card:#1a251d;--ac:#9fd0a8;--bd:#2f4235}
+:root[data-theme="dark"] body.nm .hdr{background:#1f2e24;color:#d6ead8;box-shadow:none}
+:root[data-theme="dark"] body.nm .ht span,:root[data-theme="dark"] body.nm .nav{background:rgba(214,234,216,.12);color:#d6ead8}
+:root[data-theme="dark"] body.nm .pri{background:#3e6a4a;color:#e4f3e6}
+:root[data-theme="dark"] body.nm .seg button.on{background:#2a3d30;color:#d6ead8}
+:root[data-theme="dark"] body.nm .dh{background:#2a3d30;color:#d6ead8}
+:root[data-theme="dark"] body.nm .dh.upn{background:#264038;color:#cfe8e0}
+:root[data-theme="dark"] body.nm .hd{background:#2a3d30;color:#d6ead8}
+:root[data-theme="dark"] body.nm .rep h2{color:#9fd0a8}
+:root[data-theme="dark"] body.nm .ri.nr .rt{color:#d6ead8}
+:root[data-theme="dark"] body.nm .note{background:#1b2a20;color:#d6ead8;border-color:#2f4235;border-left-color:#6fa57b}
+:root[data-theme="dark"] body.nm .note .t{color:#d6ead8}
+:root[data-theme="dark"] body.nm .ntag{color:#9fd0a8}
+:root[data-theme="dark"] body.nm .nd{background:#3a5a44;color:#e4f3e6}
+:root[data-theme="dark"] body.nm .nd b,:root[data-theme="dark"] body.nm .nd span{color:#e4f3e6}
+:root[data-theme="dark"] body.nm .note.up{background:#1a2b28;border-color:#2c4540;border-left-color:#5f9a8d}
+:root[data-theme="dark"] body.nm .note.up .t{color:#cfe8e0}
+:root[data-theme="dark"] body.nm .note.up .ntag{color:#8cc5b8}
+:root[data-theme="dark"] body.nm .note.up .nd{background:#2f5149;color:#cfe8e0}
+:root[data-theme="dark"] body.nm .note.up .nd b,:root[data-theme="dark"] body.nm .note.up .nd span{color:#cfe8e0}
+</style>
 </head>
 <body>
 <div class="hdr">
