@@ -69,6 +69,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 .dy.td{border-color:var(--ac)}.dy.sel{outline:3px solid var(--ac);outline-offset:1px}
 .leg{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;margin:12px 0;color:var(--mut)}
 .dot{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:6px;vertical-align:-1px}.dot.g{background:#16a34a}.dot.r{background:#dc2626}
+.dy.sq{border-radius:8px}.dy.nr{background:#dc2626;color:#fff}.dy.ng{background:#16a34a;color:#fff}
 .empty{color:var(--mut);text-align:center;padding:22px 0}
 .btns{display:flex;gap:8px;flex-wrap:wrap}
 .btns button{flex:1;min-width:46%;background:var(--card);border:2px solid var(--ac);color:var(--ac);padding:10px;border-radius:12px;font-weight:700}
@@ -125,7 +126,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
   <div id="list"></div>
   <div class="btns"><button id="bk">Backup data</button><button id="rst">Restore data</button></div>
   <input type="file" id="rf" hidden>
-  <div class="empty" style="font-size:12px;padding:12px 0">Version 10</div>
+  <div class="empty" style="font-size:12px;padding:12px 0">Version 11</div>
 </div>
 
 <div id="v2" hidden>
@@ -203,6 +204,8 @@ fi.onchange=function(){var f=fi.files[0],p=pend;if(!f||!p)return;
   closeM();render();};
  im.onerror=function(){alert('Could not read that photo.');};im.src=u;};
 md.onclick=function(e){if(e.target===md){saveNote();closeM();render();return;}var b=e.target.closest('button');if(!b)return;var a=b.dataset.a,id=b.dataset.i,k=b.dataset.k;
+ if(b.dataset.cn){ncm=new Date(ncm.getFullYear(),ncm.getMonth()+(+b.dataset.cn),1);noteCal();return;}
+ if(b.dataset.nday){cur=b.dataset.nday;closeM();render();return;}
  if(a==='close'||a==='save'){saveNote();closeM();render();}
  else if(a==='fshare')doShare();
  else if(a==='fdl')doDl();
@@ -359,6 +362,13 @@ $('exp').onclick=function(){var wk=tab===3,r=build(wk?'w':'d');
 $('prn').onclick=function(){$('rep').innerHTML=build(tab===3?'w':'d',true)[1];window.print();};
 window.onafterprint=function(){render();};
 /* ---- calendar sidebar ---- */
+var ncm=null;
+function noteState(d){var l=S.notes.filter(function(n){return n.date===d;});if(!l.length)return '';return l.some(function(n){return !n.done;})?'nr':'ng';}
+function noteCal(){var y=ncm.getFullYear(),m=ncm.getMonth(),f=new Date(y,m,1),off=(f.getDay()+6)%7,dim=new Date(y,m+1,0).getDate(),t=today(),i,
+ h='<div class="cal-h"><button data-cn="-1" aria-label="Previous month">‹</button><b>'+f.toLocaleDateString(undefined,{month:'long',year:'numeric'})+'</b><button data-cn="1" aria-label="Next month">›</button></div><div class="cal-g">'+['M','T','W','T','F','S','S'].map(function(x){return '<i class="wd">'+x+'</i>';}).join('');
+ for(i=0;i<off;i++)h+='<i></i>';
+ for(i=1;i<=dim;i++){var id=iso(new Date(y,m,i));h+='<button class="dy sq '+noteState(id)+(id===t?' td':'')+(id===cur?' sel':'')+'" data-nday="'+id+'">'+i+'</button>';}
+ openM(h+'</div><div class="leg"><span><i class="dot g" style="border-radius:3px"></i>All notes done</span><span><i class="dot r" style="border-radius:3px"></i>Pending notes</span></div><div class="mbt"><button class="gh" data-nday="'+t+'">Go to today</button><button class="gh" data-a="close">Close</button></div>');}
 var cm=null;
 function dayState(d){if(d>today())return '';
  if(S.jobs.some(function(j){return j.created<=d&&!j.doneDate;}))return 'r';
@@ -375,7 +385,7 @@ $('dcal').onclick=function(e){var b=e.target.closest('button');if(!b)return;
  if(b.dataset.cm){cm=new Date(cm.getFullYear(),cm.getMonth()+(+b.dataset.cm),1);renderCal();}
  else if(b.dataset.day){cur=b.dataset.day;tab=2;drawer(false);render();window.scrollTo(0,0);}};
 /* ---- tap date to pick, swipe date bar to change day/week ---- */
-$('dl').onclick=function(){var p=$('dp');p.value=cur;try{p.showPicker();}catch(e){p.focus();p.click();}};
+$('dl').onclick=function(){if(tab===4){var d=pd(cur);ncm=new Date(d.getFullYear(),d.getMonth(),1);noteCal();return;}var p=$('dp');p.value=cur;try{p.showPicker();}catch(e){p.focus();p.click();}};
 $('dp').onchange=function(){if(this.value){cur=this.value;render();}};
 (function(){var sx=0,sy=0,h=document.querySelector('.hdr');
  h.addEventListener('touchstart',function(e){var t=e.changedTouches[0];sx=t.clientX;sy=t.clientY;},{passive:true});
