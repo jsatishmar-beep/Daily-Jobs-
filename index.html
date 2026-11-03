@@ -126,7 +126,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
   <div id="list"></div>
   <div class="btns"><button id="bk">Backup data</button><button id="rst">Restore data</button></div>
   <input type="file" id="rf" hidden>
-  <div class="empty" style="font-size:12px;padding:12px 0">Version 11</div>
+  <div class="empty" style="font-size:12px;padding:12px 0">Version 12</div>
 </div>
 
 <div id="v2" hidden>
@@ -145,7 +145,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 <div id="v3" hidden>
   <div class="card add">
     <textarea id="nta" placeholder="Write a note…"></textarea>
-    <div class="arow"><input type="date" id="nd" aria-label="Note date"><button class="pri" id="nadd">Add note</button></div>
+    <div class="arow"><input type="text" id="nd" readonly aria-label="Note date, tap to choose" style="cursor:pointer;font-weight:700"><button class="pri" id="nadd">Add note</button></div>
   </div>
   <div id="nlist"></div>
 </div>
@@ -385,6 +385,7 @@ $('dcal').onclick=function(e){var b=e.target.closest('button');if(!b)return;
  if(b.dataset.cm){cm=new Date(cm.getFullYear(),cm.getMonth()+(+b.dataset.cm),1);renderCal();}
  else if(b.dataset.day){cur=b.dataset.day;tab=2;drawer(false);render();window.scrollTo(0,0);}};
 /* ---- tap date to pick, swipe date bar to change day/week ---- */
+$('nd').onclick=function(){var d=pd(cur);ncm=new Date(d.getFullYear(),d.getMonth(),1);noteCal();};
 $('dl').onclick=function(){if(tab===4){var d=pd(cur);ncm=new Date(d.getFullYear(),d.getMonth(),1);noteCal();return;}var p=$('dp');p.value=cur;try{p.showPicker();}catch(e){p.focus();p.click();}};
 $('dp').onchange=function(){if(this.value){cur=this.value;render();}};
 (function(){var sx=0,sy=0,h=document.querySelector('.hdr');
